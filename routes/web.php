@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-Auth::routes();
+    // Auth::routes();
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //User Email Test
+
+    Route::get('/emailtest', [App\Http\Controllers\UserEmailTestController::class, 'index'] )->name('useremail');
+
+
+    //Admin Login All Route
+
+    Route::group(['namespace'   => 'App\Http\Controllers'], function(){
+
+        Route::get('/admin/login', 'AdminController@showAdminLoginForm')->name('login.form');
+        Route::get('/admin/register', 'AdminController@showAdminRegisterForm')->name('register.form');
+        Route::get('/admin/panel','AdminController@adminpanel')->name('admin.dashbord');
+
+    });
+
 
 
