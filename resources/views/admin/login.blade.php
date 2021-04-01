@@ -13,12 +13,13 @@
                         <p class="account-subtitle">Access to our dashboard</p>
 
                         <!-- Form -->
-                        <form action="">
+                        <form action="{{ route('user.login') }}" method="POST" >
+                            @csrf
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Email">
+                                <input class="form-control" type="text" name="logdata" placeholder="Email/Phone/User Name">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Password">
+                                <input class="form-control" type="text" name="password" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-block" type="submit">Login</button>
@@ -39,7 +40,7 @@
                         </div>
                         <!-- /Social Login -->
 
-                        <div class="text-center dont-have">Don’t have an account? <a href="register.html">Register</a></div>
+                        <div class="text-center dont-have">Don’t have an account? <a href="{{ route('register.form') }}">Register</a></div>
                     </div>
                 </div>
             </div>

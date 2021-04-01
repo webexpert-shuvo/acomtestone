@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::USERDASH;
 
     /**
      * Create a new controller instance.
@@ -64,10 +64,13 @@ class LoginController extends Controller
 
         request()->merge([$type => $logdata ]);
         return  $type;
+    }
 
 
+    protected function loggedOut(Request $request)
+    {
 
-
+        return redirect()->route('login.form');
 
     }
 
